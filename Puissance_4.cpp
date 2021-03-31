@@ -28,6 +28,7 @@
         for(int i=0;i<2;i++){
             if(_grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(1,i)
             && _grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(2,i)
+            && _grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(3,i)
             && _grilleDeJeu.getContent(0,i)!=' ')
             {return true;}
         }
@@ -38,6 +39,7 @@
         for(int i=0;i<2;i++){
             if(_grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,1)
             && _grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,2)
+            && _grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,3)
             && _grilleDeJeu.getContent(i,0)!=' ')
             {return true;}
         }
