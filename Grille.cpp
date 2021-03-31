@@ -4,8 +4,8 @@
 #include "Grille.h"
 #include <iostream>
 
-    Grille::Grille() : _nombreColonnes(7), _nombreLignes(6) { 
-        _tableau = std::vector<char>(42,' ');
+    Grille::Grille() : _nombreColonnes(3), _nombreLignes(3) { 
+        _tableau = std::vector<char>(9,' ');
         resetContent(); 
     }
     
@@ -26,10 +26,10 @@
         for(int j=0;j<_nombreLignes;j++){
             for(int i=0;i<_nombreColonnes;i++){
                 std::cout << this->getContent(i,j);
-                if(i!=_nombreColonnes-1)  std::cout << " | ";
+                if(i!=_nombreColonnes-1)std::cout << " | ";
             }
             std::cout << std::endl;
-            if(j!=_nombreLignes-1)  std::cout << " ------- " << std::endl;
+            if(j!=_nombreLignes-1) std::cout << " --------------------- " << std::endl;
         }
     }
 

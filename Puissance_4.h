@@ -4,7 +4,7 @@
 #include "Grille.h"
 #include <string>
 
-class Tictactoe{
+class Puissance4{
 
     private:
         Grille _grilleDeJeu;
@@ -12,9 +12,9 @@ class Tictactoe{
         char _symboleCourant;
 
     public:
-        Tictactoe();
+        Puissance4();
         void afficheGrille();
-        void ajouteSymbole(int x, int y);
+        void ajouteSymbole(int x);
         bool testeVictoireVerticale();
         bool testeVictoireHorizontale();
         bool testeVictoireDiagonale();
