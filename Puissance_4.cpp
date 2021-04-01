@@ -49,6 +49,9 @@
     bool Puissance4::testeVictoireDiagonale(){
         if(_grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(1,1)
             && _grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(2,2)
+
+
+            
             && _grilleDeJeu.getContent(0,0)!=' ')
             {return true;}
         if(_grilleDeJeu.getContent(2,0)==_grilleDeJeu.getContent(1,1)
