@@ -4,7 +4,7 @@
 #include "jeu.h"
 #include <iostream>
 
-    jeu::jeu(){
+    Jeu::Jeu(){
 
     }   
 
