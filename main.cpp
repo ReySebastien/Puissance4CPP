@@ -24,7 +24,7 @@ int main(){
         jeu->afficheGrille();
         std::cin >> numeroCase;
         if (choix ==0) {jeu->ajouteSymbole(numeroCase%3, numeroCase/3);}
-        else {jeu->ajouteSymbole(numeroCase,0);}
+        else {jeu-> ajouteSymbole(numeroCase,0);}
         partiegagnee = jeu->testeVictoireDiagonale() || jeu->testeVictoireHorizontale() || jeu->testeVictoireVerticale();
         jeu->finTour();
     }

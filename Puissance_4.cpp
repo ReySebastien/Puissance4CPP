@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-    Puissance4::Puissance4() : _symboleCourant('X') /*,_grilleDeJeu(7,6)*/ {
+    Puissance4::Puissance4() : _symboleCourant('X'), _numeroTour(0)/*,_grilleDeJeu(7,6)*/ {
         _grilleDeJeu = Grille(7,6);
     }
 
@@ -36,7 +36,9 @@
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne,ligne+2)
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne,ligne+3)
                 && _grilleDeJeu.getContent(colonne,ligne)!=' ')
-                {return true;}
+                {   std:: cout << "Victoire de " << _symboleCourant << " Bravo !" << std:: endl;
+                    std:: cin >> ligne ;
+                    return true;}
             }
         }
         return false;
@@ -49,7 +51,9 @@
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+2,ligne)
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+3,ligne)
                 && _grilleDeJeu.getContent(colonne,ligne)!=' ')
-                {return true;}
+                {   std:: cout << "Victoire de " << _symboleCourant << " Bravo !" << std:: endl;
+                    std:: cin >> ligne ;
+                    return true;}
             }
         }
         return false; 
@@ -62,7 +66,9 @@
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+2,ligne+2)
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+3,ligne+3)
                 && _grilleDeJeu.getContent(colonne,ligne)!=' ')
-                {return true;}
+                {   std:: cout << "Victoire de " << _symboleCourant << " Bravo !" << std:: endl;
+                    std:: cin >> ligne ;
+                    return true;}
             }
         }
         for(int colonne = 0 ; colonne <=3 ; colonne++){
@@ -71,7 +77,9 @@
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+2,ligne-2)
                 && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+3,ligne-3)
                 && _grilleDeJeu.getContent(colonne,ligne)!=' ')
-                {return true;}
+                {   std:: cout << "Victoire de " << _symboleCourant << " Bravo !" << std:: endl;
+                    std:: cin >> ligne ;
+                    return true;}
             }
         }
 
@@ -79,8 +87,15 @@
     }
 
     bool Puissance4::testeJeuNul(){
-        return _numeroTour==43;
+        if(_numeroTour==43){
+            std:: cout << "Match nul !" << std:: endl;
+                std:: cin >> _numeroTour ;
+                return true;
         }
+        else {
+            return false;
+        }
+    }
 
     void Puissance4::finTour(){
         _symboleCourant=='X'?_symboleCourant='O':_symboleCourant='X';
