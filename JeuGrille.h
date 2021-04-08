@@ -1,10 +1,10 @@
-#ifndef PUISSANCE4_H
-#define PUISSANCE4_H
+#ifndef JEUGRILLE_H
+#define JEUGRILLE_H
 
 #include "Grille.h"
 #include <string>
 
-class Puissance4{
+class JeuGrille{
 
     private:
         Grille _grilleDeJeu;
@@ -12,15 +12,15 @@ class Puissance4{
         char _symboleCourant;
 
     public:
-        Puissance4();
-        void afficheGrille();
-        void ajouteSymbole(int x, int y);
-        bool testeVictoireVerticale();
-        bool testeVictoireHorizontale();
-        bool testeVictoireDiagonale();
-        bool testeJeuNul();
+        JeuGrille(){}
+        virtual void afficheGrille(){}
+        virtual void ajouteSymbole(int x, int y){}
+        virtual bool testeVictoireVerticale(){}
+        virtual bool testeVictoireHorizontale(){}
+        virtual bool testeVictoireDiagonale(){}
+        virtual bool testeJeuNul(){}
 
-        void finTour();
+        virtual void finTour(){}
 
 };
 

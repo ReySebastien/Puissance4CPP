@@ -1,6 +1,6 @@
 #include "Grille.cpp"
 #include "Puissance_4.cpp"
-//#include "jeu.cpp"
+#include "JeuGrille.h"
 #include "Tictactoe.cpp"
 #include <iostream>
 #include <string>
@@ -9,24 +9,14 @@
 int main(){
 
     bool partiegagnee = false;
-    Puissance4 jeu = Puissance4();
-    int numeroCase;
+    JeuGrille jeu;
 
-    /*Jeu jeu;
-    int numeroCase;
-    int choix; 
+    std:: cout << "TicTacToe (0) ou Puissance4 (1) ?";
+    int choix;
     std::cin >> choix;
+    if(choix == 0){ jeu = Tictactoe();} else {jeu = Puissance4();}
 
-    if(choix == 1){
-        jeu = Puissance4();
-    }
-
-    else{
-        jeu = Tictactoe();
-    }*/
-
-    //Grille maGrilleDeTest = Grille(7,6);
-    //maGrilleDeTest.affiche();
+    int numeroCase;
 
 
     while(!partiegagnee && !jeu.testeJeuNul()){
