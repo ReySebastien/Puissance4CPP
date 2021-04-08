@@ -6,56 +6,75 @@
 #include <iostream>
 
 
-    Puissance4::Puissance4() : _symboleCourant('X'), _grilleDeJeu(7,6) {}
+    Puissance4::Puissance4() : _symboleCourant('X') /*,_grilleDeJeu(7,6)*/ {
+        _grilleDeJeu = Grille(7,6);
+    }
 
     void Puissance4::afficheGrille(){
         _grilleDeJeu.affiche();
     }
 
-    void Puissance4::ajouteSymbole(int x){
-        int y = 0; 
-        for(int i=0; i<6; i++){
-            if (_grilleDeJeu.getContent(x,i)== ' ')
-            {
-            y = i;
-            }
-        }
-
-        _grilleDeJeu.setContent(x,y,_symboleCourant);
+    void Puissance4::ajouteSymbole(int x, int y){
+      int compteur=5;
+      while(_grilleDeJeu.getContent(x,compteur)!=' ' && compteur >= 0){
+          compteur--;
+      }
+      if(compteur >=0){
+          _grilleDeJeu.setContent(x, compteur, _symboleCourant);
+      }
+      else {
+          std::cout << "Colonne remplie ! Veuillez en saisir une autre." << std:: endl; 
+          std::cin >> x; 
+          this->ajouteSymbole(x,y);
+      }
     }
 
     bool Puissance4::testeVictoireVerticale(){
-        for(int i=0;i<2;i++){
-            if(_grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(1,i)
-            && _grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(2,i)
-            && _grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(3,i)
-            && _grilleDeJeu.getContent(0,i)!=' ')
-            {return true;}
+        for(int colonne = 0 ; colonne <=6 ; colonne++){
+            for(int ligne = 0 ; ligne <=2 ; ligne++){
+                if(_grilleDeJeu.getContent(colonne, ligne)==_grilleDeJeu.getContent(colonne,ligne+1)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne,ligne+2)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne,ligne+3)
+                && _grilleDeJeu.getContent(colonne,ligne)!=' ')
+                {return true;}
+            }
         }
         return false;
     }
 
     bool Puissance4::testeVictoireHorizontale(){
-        for(int i=0;i<2;i++){
-            if(_grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,1)
-            && _grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,2)
-            && _grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,3)
-            && _grilleDeJeu.getContent(i,0)!=' ')
-            {return true;}
+        for(int colonne = 0 ; colonne <=3 ; colonne++){
+            for(int ligne = 0 ; ligne <=5 ; ligne++){
+                if(_grilleDeJeu.getContent(colonne, ligne)==_grilleDeJeu.getContent(colonne+1,ligne)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+2,ligne)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+3,ligne)
+                && _grilleDeJeu.getContent(colonne,ligne)!=' ')
+                {return true;}
+            }
         }
-        return false;   
+        return false; 
     }
 
     bool Puissance4::testeVictoireDiagonale(){
-        if(_grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(1,1)
-            && _grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(2,2)
-            && _grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(3,3)
-            && _grilleDeJeu.getContent(0,0)!=' ')
-            {return true;}
-        if(_grilleDeJeu.getContent(2,0)==_grilleDeJeu.getContent(1,1)
-            && _grilleDeJeu.getContent(2,0)==_grilleDeJeu.getContent(0,2)
-            && _grilleDeJeu.getContent(2,0)!=' ')
-            {return true;}
+        for(int colonne = 0 ; colonne <=3 ; colonne++){
+            for(int ligne = 0 ; ligne <=2 ; ligne++){
+                if(_grilleDeJeu.getContent(colonne, ligne)==_grilleDeJeu.getContent(colonne+1,ligne+1)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+2,ligne+2)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+3,ligne+3)
+                && _grilleDeJeu.getContent(colonne,ligne)!=' ')
+                {return true;}
+            }
+        }
+        for(int colonne = 0 ; colonne <=3 ; colonne++){
+            for(int ligne = 5 ; ligne <=3 ; ligne--){
+                if(_grilleDeJeu.getContent(colonne, ligne)==_grilleDeJeu.getContent(colonne+1,ligne-1)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+2,ligne-2)
+                && _grilleDeJeu.getContent(colonne,ligne)==_grilleDeJeu.getContent(colonne+3,ligne-3)
+                && _grilleDeJeu.getContent(colonne,ligne)!=' ')
+                {return true;}
+            }
+        }
+
         return false;
     }
 
